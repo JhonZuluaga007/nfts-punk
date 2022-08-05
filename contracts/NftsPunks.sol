@@ -6,10 +6,12 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Base64.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 import "./PunksDNA.sol";
 
 contract NftsPunks is ERC721, ERC721Enumerable, Ownable, PunkDNA {
     using Counters for Counters.Counter;
+    using Strings for uint256;
 
     Counters.Counter private _idCounter;
     uint256 public maxSupply;
@@ -87,7 +89,7 @@ contract NftsPunks is ERC721, ERC721Enumerable, Ownable, PunkDNA {
         string memory jsonURI = Base64.encode(
             abi.encodePacked(
                 '{ "name": "NftsPunks #',
-                tokenId,
+                tokenId.toString(),
                 '", "description": "Platzi Punks are randomized Avataaars stored on chain to teach DApp development on Platzi", "image": "',
                 image,
                 '"}'
