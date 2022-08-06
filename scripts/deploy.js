@@ -6,7 +6,7 @@ const deploy = async () => {
     console.log("Deploying contract with the account: ", deployer.address );
 
     const nftsPunks = await ethers.getContractFactory("NftsPunks");
-    const deployed = await nftsPunks.deploy();
+    const deployed = await nftsPunks.deploy(800);
 
     console.log("Nfts Punks is deployed at: ", deployed.address);
 };
